@@ -12,11 +12,17 @@ homes_df <- homes_df %>%
 
 #examine characteristics of the dependent variable
 homes_df %>% 
+  filter(price != max(price),
+         propertysqft <= 3500
+  ) %>% 
   ggplot(aes(y = price, fill = type)) +
   geom_boxplot() +
   facet_wrap(~type, scales = 'free_y')
 
 homes_df %>% 
+  filter(price != max(price),
+         propertysqft <= 3500
+         ) %>% 
   ggplot(aes(x = propertysqft, y = price, color = type)) +
   geom_point() +
   facet_wrap(~type, scales = 'free_y')
